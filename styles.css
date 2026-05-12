@@ -326,7 +326,7 @@ a.logo:hover { color: var(--mauve-deep); }
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 100px;
-  align-items: center;
+  align-items: start;
 }
 .section-label {
   font-size: 12px;
