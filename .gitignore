@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Maquette d'origine (gardée localement, pas dans le repo)
+choeurs_de_femmes.html
+
+# Logs / build
+*.log
+node_modules/
+dist/
+
+CLAUDE.md
+update_instructions.md
+README.md
+DEPLOY.md
+*.jpeg
+*.jpg
