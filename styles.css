@@ -261,16 +261,23 @@ a.logo:hover { color: var(--mauve-deep); }
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #b89d7a 0%, #8a9b7a 100%);
-  background-image: url('images/hero-maison-julie.webp'), linear-gradient(135deg, #b89d7a 0%, #8a9b7a 100%);
-  background-size: cover;
-  background-position: center;
   border-radius: 12px;
   overflow: hidden;
+  isolation: isolate;
+}
+.hero-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .hero-img::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
     radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
     radial-gradient(circle at 70% 80%, rgba(74, 47, 82, 0.4) 0%, transparent 60%);
@@ -453,36 +460,35 @@ a.logo:hover { color: var(--mauve-deep); }
   aspect-ratio: 16/9;
   position: relative;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
+  isolation: isolate;
+}
+.card-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .card-visual-1 {
   background: linear-gradient(135deg, #d4a8b8 0%, #8c6a94 100%);
-  background-image: url('images/formule1.webp'), linear-gradient(135deg, #d4a8b8 0%, #8c6a94 100%);
-  background-size: cover;
-  background-position: center;
 }
 .card-visual-2 {
   background: linear-gradient(135deg, #c4b89c 0%, #8a9b7a 100%);
-  background-image: url('images/formule2.webp'), linear-gradient(135deg, #c4b89c 0%, #8a9b7a 100%);
-  background-size: cover;
-  background-position: center;
 }
 .card-visual-3 {
   background: linear-gradient(135deg, #d4a87a 0%, #a85d28 100%);
-  background-image: url('images/formule3.webp'), linear-gradient(135deg, #d4a87a 0%, #a85d28 100%);
-  background-size: cover;
-  background-position: center;
 }
 .card-visual::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 50%);
 }
 .card-price {
   position: absolute;
   top: 20px; right: 20px;
+  z-index: 2;
   padding: 10px 20px;
   border-radius: 100px;
   font-family: 'Manrope', sans-serif;
@@ -641,33 +647,31 @@ a.logo:hover { color: var(--mauve-deep); }
   border-radius: 4px;
   position: relative;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
+  isolation: isolate;
+}
+.lieu-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .lieu-img::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 50%);
 }
 .lieu-img-1 {
   grid-column: 1; grid-row: 1 / 3;
   background: linear-gradient(160deg, #c4b89c 0%, #8a7558 100%);
-  background-image: url('images/chaise_longue.webp'), linear-gradient(160deg, #c4b89c 0%, #8a7558 100%);
-  background-size: cover;
-  background-position: center;
 }
 .lieu-img-2 {
   background: linear-gradient(135deg, #8a9b7a 0%, #4a5d3e 100%);
-  background-image: url('images/jardin_ensemble.webp'), linear-gradient(135deg, #8a9b7a 0%, #4a5d3e 100%);
-  background-size: cover;
-  background-position: center;
 }
 .lieu-img-3 {
   background: linear-gradient(135deg, #7a9bb5 0%, #4a6d8a 100%);
-  background-image: url('images/berre.webp'), linear-gradient(135deg, #7a9bb5 0%, #4a6d8a 100%);
-  background-size: cover;
-  background-position: center;
 }
 
 /* ============ PLANNING ============ */
@@ -955,11 +959,16 @@ details p {
   aspect-ratio: 1043/1070;
   border-radius: 8px;
   background: linear-gradient(135deg, #c0a8cc 0%, #8c6a94 60%, #4a2f52 100%);
-  background-image: url('images/sonia-banc.webp'), linear-gradient(135deg, #c0a8cc 0%, #8c6a94 60%, #4a2f52 100%);
-  background-size: cover;
-  background-position: center top;
   position: relative;
   overflow: hidden;
+}
+.sonia-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 .sonia-img-caption {
   margin-top: 10px;
