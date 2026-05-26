@@ -387,6 +387,25 @@ a.logo:hover { color: var(--mauve-deep); }
   margin-bottom: 20px;
 }
 
+.voix-sana-site-link {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--mauve);
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid var(--mauve);
+  padding-bottom: 4px;
+  transition: all 0.3s;
+}
+.voix-sana-site-link:hover {
+  color: var(--ocre-deep);
+  border-color: var(--ocre);
+  gap: 12px;
+}
+
 .voix-reassure {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
