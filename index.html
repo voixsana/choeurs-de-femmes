@@ -336,7 +336,7 @@
         <h2>Nos journées <em>d'automne 2026</em></h2>
       </div>
 
-      <div class="planning-note">
+      <div class="planning-note" id="planning-note">
         Les dates sont proposées <strong>après les premières inscriptions</strong>. Vous rejoignez le groupe WhatsApp de
         Chœurs de Femmes, puis la date de votre journée est choisie <strong>collectivement par sondage</strong>, afin que
         chaque journée se tienne avec un cercle complet de <strong>7 participantes</strong>.
@@ -699,6 +699,7 @@
   <!-- CALENDRIER — génération des mois et mise en avant des dates retenues -->
   <script>
     // Jusqu'à 3 dates. Format ISO. Laisser vide tant que les dates ne sont pas fixées.
+    // format : AAAA-MM-JJ, ex. '2026-10-12'
     const DATES_JOURNEES = [];
 
     // Mois affichés dans le calendrier, format ISO « AAAA-MM ».
@@ -707,6 +708,7 @@
     (function () {
       var wrapper = document.getElementById('cal-wrapper');
       var bandeau = document.getElementById('planning-dates');
+      var note = document.getElementById('planning-note');
       if (!wrapper) return;
 
       var NOMS_MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
@@ -738,6 +740,17 @@
           bandeau.innerHTML = "<p class=\"planning-fallback\">Les trois dates d'automne seront annoncées " +
             "en avant-première dans le groupe WhatsApp, selon les premières inscriptions.</p>";
         }
+      }
+
+      // — Encadré d'introduction : le texte statique couvre le cas « aucune date » —
+      if (note && dates.length) {
+        var amorce = dates.length > 1
+          ? "<strong>Les premières dates sont posées</strong>"
+          : "<strong>Une première date est posée</strong>";
+        note.innerHTML = amorce + " — d'autres pourront s'ajouter selon les inscriptions. " +
+          "Après votre inscription, vous rejoignez le groupe WhatsApp de Chœurs de Femmes, où la date de " +
+          "votre journée est arrêtée <strong>collectivement par sondage</strong>, afin que chaque journée se " +
+          "tienne avec un cercle complet de <strong>7 participantes</strong>.";
       }
 
       // — Grilles mensuelles —
