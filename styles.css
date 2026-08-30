@@ -415,8 +415,8 @@ a.logo:hover { color: var(--mauve-deep); }
   letter-spacing: 0.02em;
 }
 
-/* ============ FORMULES ============ */
-.formules {
+/* ============ LA JOURNÉE ============ */
+.journee {
   padding: 72px 0 60px;
   position: relative;
 }
@@ -460,6 +460,14 @@ a.logo:hover { color: var(--mauve-deep); }
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
+
+/* — Grille du déroulé : 3 cartes, ou 2 cartes centrées quand le bonus est retiré — */
+.cards-journee { margin-inline: auto; }
+.cards-journee:has(> .card:last-child:nth-child(2)),
+.cards-journee.is-duo {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 760px;
+}
 .card {
   background: var(--cream-light);
   border-radius: 4px;
@@ -475,50 +483,36 @@ a.logo:hover { color: var(--mauve-deep); }
   border-color: var(--mauve-soft);
   box-shadow: 0 20px 60px rgba(74, 47, 82, 0.12);
 }
-.card-visual {
-  aspect-ratio: 16/9;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+/* — Cartes de temps : filet d'accent en haut, pas de visuel — */
+.card-temps { border-top: 3px solid var(--mauve); }
+.card-temps:hover { border-top-color: var(--mauve); }
+.card-temps-apresmidi,
+.card-temps-apresmidi:hover { border-top-color: var(--sage); }
+.card-temps .card-content { padding: 36px 32px; }
+.card-emoji { font-size: 0.8em; margin-right: 4px; }
+
+/* — Carte bonus : subordonnée, sans aplat ni visuel — */
+.card-bonus {
+  background: transparent;
+  border: 1px dashed var(--line);
 }
-.card-visual img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.card-bonus:hover {
+  transform: none;
+  border-color: var(--ocre);
+  box-shadow: none;
 }
-.card-visual-1 {
-  background: linear-gradient(135deg, #d4a8b8 0%, #8c6a94 100%);
-}
-.card-visual-2 {
-  background: linear-gradient(135deg, #c4b89c 0%, #8a9b7a 100%);
-}
-.card-visual-3 {
-  background: linear-gradient(135deg, #d4a87a 0%, #a85d28 100%);
-}
-.card-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.25) 0%, transparent 50%);
-}
-.card-price {
-  position: absolute;
-  top: 20px; right: 20px;
-  z-index: 2;
-  padding: 10px 20px;
+.card-badge {
+  align-self: flex-start;
+  padding: 9px 18px;
   border-radius: 100px;
+  background: var(--ocre-deep);
+  color: #fff;
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: 17px;
-  color: #fff;
+  font-size: 13px;
   letter-spacing: 0.03em;
+  margin-bottom: 18px;
 }
-.cards .card:nth-child(1) .card-price { background: var(--mauve); }
-.cards .card:nth-child(2) .card-price { background: var(--sage); }
-.cards .card:nth-child(3) .card-price { background: var(--ocre); }
 .card-content {
   padding: 32px;
   flex: 1;
@@ -541,9 +535,7 @@ a.logo:hover { color: var(--mauve-deep); }
   color: var(--mauve-deep);
   margin-bottom: 16px;
 }
-.cards .card:nth-child(1) h3 { color: var(--mauve); }
-.cards .card:nth-child(2) h3 { color: var(--sage); }
-.cards .card:nth-child(3) h3 { color: var(--ocre); }
+.card-bonus h3 { color: var(--ocre-deep); font-size: 28px; }
 .card-animatrice {
   font-family: 'Cormorant Garamond', serif;
   font-style: normal;
@@ -560,6 +552,7 @@ a.logo:hover { color: var(--mauve-deep); }
   color: #3a2e3f;
   margin-bottom: 28px;
 }
+.card-desc:last-child { margin-bottom: 0; }
 .card-meta {
   display: flex;
   flex-direction: column;
@@ -597,6 +590,58 @@ a.logo:hover { color: var(--mauve-deep); }
   border-color: var(--ocre);
   gap: 12px;
 }
+
+/* — Bloc tarif, sous la grille — */
+.journee-tarif {
+  max-width: 760px;
+  margin: 48px auto 0;
+  background: var(--cream-light);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 40px;
+  text-align: center;
+}
+.tarif-prix {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 1.1;
+  color: var(--mauve-deep);
+}
+.tarif-prix span {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--mauve);
+  margin-left: 10px;
+}
+.tarif-inclus {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+  color: var(--mauve);
+  margin-top: 2px;
+}
+.tarif-horaires {
+  font-size: 13px;
+  color: var(--mauve-deep);
+  margin-top: 16px;
+}
+.tarif-horaires strong {
+  font-weight: 600;
+  color: var(--ocre-deep);
+}
+.tarif-duo {
+  max-width: 620px;
+  margin: 26px auto 30px;
+  padding: 16px 28px;
+  border: 1px solid var(--ocre);
+  border-radius: 100px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mauve-deep);
+}
+.tarif-duo strong { color: var(--ocre-deep); }
 
 /* ============ LIEU ============ */
 .lieu {
@@ -698,35 +743,42 @@ a.logo:hover { color: var(--mauve-deep); }
   padding: 60px 0 48px;
   background: var(--cream);
 }
-.planning-legend {
+.planning-dates {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+.planning-fallback {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--mauve);
+  margin: 0;
+}
+.planning-dates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  justify-content: center;
-  gap: 32px;
   flex-wrap: wrap;
-  margin: 48px 0 56px;
+  justify-content: center;
+  gap: 12px;
 }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.planning-dates li {
+  padding: 9px 20px;
+  border-radius: 100px;
+  background: var(--mauve);
+  color: #fff;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--mauve-deep);
+  font-weight: 600;
 }
-.legend-dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.legend-f1 { background: var(--mauve); }
-.legend-f2 { background: var(--sage); }
-.legend-f3 { background: var(--ocre); }
 
 .cal-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 900px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 .cal-month {
@@ -768,9 +820,7 @@ a.logo:hover { color: var(--mauve-deep); }
   color: var(--mauve);
   border-radius: 50%;
 }
-.cal-d.ev-f1 { background: var(--mauve);      color: #fff; font-weight: 600; }
-.cal-d.ev-f2 { background: var(--sage);       color: #fff; font-weight: 600; }
-.cal-d.ev-f3 { background: var(--ocre);       color: #fff; font-weight: 600; }
+.cal-d.is-journee { background: var(--mauve); color: #fff; font-weight: 600; }
 
 .planning-note {
   max-width: 720px;
@@ -1439,7 +1489,31 @@ footer a:hover { color: var(--cream-light); }
   color: var(--mauve-soft);
 }
 
+/* ============ ACCESSIBILITÉ ============ */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--ocre-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card:hover { transform: none; }
+}
+
 /* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .cal-wrapper { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
+}
+
 @media (max-width: 900px) {
   .hero-grid, .voix-grid, .lieu-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   .cards, .testi-grid { grid-template-columns: 1fr; }
@@ -1457,9 +1531,15 @@ footer a:hover { color: var(--cream-light); }
   .voix-grid h2, .section-header h2, .lieu h2, .faq h2, .reservation h2 { font-size: 40px; }
   .voix-sana::before { display: none; }
 
+  .cards-journee:has(> .card:last-child:nth-child(2)),
+  .cards-journee.is-duo { grid-template-columns: 1fr; max-width: 480px; }
+  .journee-tarif { padding: 28px 22px; }
+  .tarif-prix { font-size: 38px; }
+  .tarif-prix span { display: block; margin-left: 0; }
+  .tarif-duo { padding: 16px 22px; border-radius: 16px; }
+
   .cal-wrapper { grid-template-columns: 1fr; gap: 24px; max-width: 420px; }
   .cal-month { padding: 20px; }
-  .planning-legend { gap: 16px 24px; }
 
   .whatsapp-card { padding: 2rem 1.25rem 2rem; }
   .btn-whatsapp { width: 100%; justify-content: center; }
